@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useHead } from 'unhead';
+import { useSeoMeta } from '@vueuse/head';
 import MessageTitle from '@/components/MessageTitle.vue';
 import MessageBody from '@/components/MessageBody.vue';
 import RedirectButton from '@/components/RedirectButton.vue';
@@ -17,7 +17,7 @@ let status = ref(Status.UNKNOWN);
 let loading = ref(false);
 const route = useRoute();
 
-useHead({
+useSeoMeta({
   title: 'Unsubscribe',
   description: 'Unsubscribe from Snapshot weekly summary mailing list'
 });

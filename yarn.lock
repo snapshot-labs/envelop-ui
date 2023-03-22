@@ -323,7 +323,7 @@
     "@typescript-eslint/types" "5.56.0"
     eslint-visitor-keys "^3.3.0"
 
-"@unhead/dom@1.1.23":
+"@unhead/dom@1.1.23", "@unhead/dom@^1.1.23":
   version "1.1.23"
   resolved "https://registry.yarnpkg.com/@unhead/dom/-/dom-1.1.23.tgz#26bdeea7d806fb76757704293dcbb36be3a5c768"
   integrity sha512-Ofa427IF7tMhL/Qw4JzlAbRVBnQjURZONcjhGHVOCoNLU+GAKfbDLBpR2r3kXQFFcv2aDKygoSVyxU6R0cLptw==
@@ -331,7 +331,7 @@
     "@unhead/schema" "1.1.23"
     "@unhead/shared" "1.1.23"
 
-"@unhead/schema@1.1.23":
+"@unhead/schema@1.1.23", "@unhead/schema@^1.1.23":
   version "1.1.23"
   resolved "https://registry.yarnpkg.com/@unhead/schema/-/schema-1.1.23.tgz#804f4de801e4549868212a3b0a8cecfcb61bd8cd"
   integrity sha512-ens8dY3ji8xLVutrcLnNmWq4dpBQIzvSHBr6yZqj7mF8RORXYNwJsY0LRAyAgTyv9aD5aEVpQIiz9s4f2+Nncg==
@@ -345,6 +345,24 @@
   integrity sha512-6uFEn/DRainxc3IE+RTMV6AK4Xi8osg7qAUAVMz3KpF0EoHzGbBjVBuSrkf7CnrE9Eg+/QYGLdwTvONJHCcYOA==
   dependencies:
     "@unhead/schema" "1.1.23"
+
+"@unhead/ssr@^1.1.23":
+  version "1.1.23"
+  resolved "https://registry.yarnpkg.com/@unhead/ssr/-/ssr-1.1.23.tgz#da1663e5ebf73b26a0f0353103eb2e95dc95122c"
+  integrity sha512-msxPjkHG2TtgTCRBFjTTTVHPOgGSmNtQCz3zjN1xxY1BRb7NdUN6Yure85qNt+yNUtcQ5C45NmJIxdNDjrJhlQ==
+  dependencies:
+    "@unhead/schema" "1.1.23"
+    "@unhead/shared" "1.1.23"
+
+"@unhead/vue@^1.1.23":
+  version "1.1.23"
+  resolved "https://registry.yarnpkg.com/@unhead/vue/-/vue-1.1.23.tgz#fddb7303f5213df96275addc3c9a105f1eba3b4d"
+  integrity sha512-v693TmDYIZyVkZBW+YGyy4Zgl78gQZby84yXpok+E9tmqg2POQ9oG0ILdPNdlwLfWeSrhb8dTahWb68v608LdA==
+  dependencies:
+    "@unhead/schema" "1.1.23"
+    "@unhead/shared" "1.1.23"
+    hookable "^5.4.2"
+    unhead "1.1.23"
 
 "@vitejs/plugin-vue@^4.1.0":
   version "4.1.0"
@@ -524,6 +542,16 @@
   version "3.2.47"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.47.tgz#e597ef75086c6e896ff5478a6bfc0a7aa4bbd14c"
   integrity sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==
+
+"@vueuse/head@^1.1.23":
+  version "1.1.23"
+  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-1.1.23.tgz#a94a4457aed0768d4e9a595097b9d1716a67962b"
+  integrity sha512-bJiiQXrICvCI740jR2CLK+FhXyvMx2dIfyeF3FdOsYJn6OtexdBI2wchyuKNYmiAQ8cibAHxmDUytAFqIdIRJg==
+  dependencies:
+    "@unhead/dom" "^1.1.23"
+    "@unhead/schema" "^1.1.23"
+    "@unhead/ssr" "^1.1.23"
+    "@unhead/vue" "^1.1.23"
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
@@ -1956,7 +1984,7 @@ ufo@^1.1.1:
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.1.1.tgz#e70265e7152f3aba425bd013d150b2cdf4056d7c"
   integrity sha512-MvlCc4GHrmZdAllBc0iUDowff36Q9Ndw/UzqmEKyrfSzokTd9ZCy1i+IIk5hrYKkjoYVQyNbrw7/F8XJ2rEwTg==
 
-unhead@^1.1.23:
+unhead@1.1.23:
   version "1.1.23"
   resolved "https://registry.yarnpkg.com/unhead/-/unhead-1.1.23.tgz#061f1eecaed1f25ed85e0a226ec83c9b942e9eac"
   integrity sha512-nM74sM3+puqhHLC9cbwk0rOsjZR41aP0UJeQcoYVuzFlX0+abECgPkpkSI+/HZsXeRVTGxs9WWmjiFHaG18DrQ==

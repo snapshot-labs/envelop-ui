@@ -16,7 +16,7 @@
   },
   "prettier": "@snapshot-labs/prettier-config",
   "dependencies": {
-    "unhead": "^1.1.23",
+    "@vueuse/head": "^1.1.23",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

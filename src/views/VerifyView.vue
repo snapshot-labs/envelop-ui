@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { useHead } from 'unhead';
+import { useSeoMeta } from '@vueuse/head';
 import BaseButton from '@/components/BaseButton.vue';
 import MessageTitle from '@/components/MessageTitle.vue';
 import MessageBody from '@/components/MessageBody.vue';
@@ -17,7 +17,7 @@ let status = ref(Status.UNKNOWN);
 let loading = ref(false);
 const route = useRoute();
 
-useHead({
+useSeoMeta({
   title: 'Verify email',
   description: 'Verify your email to confirm your subscription to Snapshot weekly summary'
 });
