@@ -1,6 +1,5 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,vue}'],
-  darkMode: 'class',
   theme: {
     extend: {
       borderColor: {

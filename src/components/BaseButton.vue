@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 defineProps<{
   primary?: boolean;
   variant?: 'danger';
@@ -12,7 +13,7 @@ defineProps<{
   <button
     :type="type || 'button'"
     :class="[
-      'button px-[22px] ',
+      'button w-full px-[22px] ',
       {
         'button--primary hover:brightness-95': primary,
         'button--danger': variant === 'danger'
