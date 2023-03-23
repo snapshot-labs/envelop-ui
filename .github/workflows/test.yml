@@ -13,4 +13,5 @@ jobs:
       - run: yarn --frozen-lockfile
       - run: yarn typecheck
       - run: yarn lint:nofix
-      # - run: yarn test:unit # Disabled because failing without any tests
+      - run: yarn dev
+      - run: yarn test:e2e
