@@ -13,5 +13,6 @@ jobs:
       - run: yarn --frozen-lockfile
       - run: yarn typecheck
       - run: yarn lint:nofix
-      - run: yarn dev
+      - run: yarn build
+      - run: yarn vite preview --port=8080 &
       - run: yarn test:e2e
