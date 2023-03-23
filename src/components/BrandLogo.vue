@@ -1,7 +1,7 @@
 <template>
   <div class="brand-logo">
-    <img alt="Snapshot logo" src="/logo.png" class="theme-light max-h-7" />
-    <img alt="Snapshot logo" src="/logo-white.png" class="theme-dark max-h-7" />
+    <img alt="Snapshot logo" src="~@/assets/logo.png" class="theme-light max-h-7" />
+    <img alt="Snapshot logo" src="~@/assets/logo-white.png" class="theme-dark max-h-7" />
   </div>
 </template>
 
