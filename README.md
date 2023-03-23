@@ -14,13 +14,16 @@ Set the envelop API url in the `.env` file
 
 ## Compiles and hot-reloads for development
 
-yarn dev
+> yarn dev
 
-## Linting and typecheck
+## Linting, typecheck and tests
 
 > yarn lint
+
 > yarn typecheck
+
+> yarn test:e2e
 
 ## License
 
-MIT
+[MIT](https://github.com/snapshot-labs/envelop-ui/blob/bootstrap-app/LICENSE)
