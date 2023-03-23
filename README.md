@@ -1,5 +1,7 @@
 # envelop-ui
 
+[![Test](https://github.com/snapshot-labs/envelop-ui/actions/workflows/test.yml/badge.svg)](https://github.com/snapshot-labs/envelop-ui/actions/workflows/test.yml)
+
 Vue.js front-end for envelop, handling all the user interactions
 
 ## Project Setup
