@@ -41,7 +41,7 @@ function verify() {
   })
     .then(response => {
       loading.value = false;
-
+      console.log(response.status);
       if (response.status === 200) {
         status.value = Status.SUCCESS;
       } else {

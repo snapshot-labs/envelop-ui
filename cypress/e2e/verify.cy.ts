@@ -4,9 +4,8 @@ describe('Verify', () => {
   const address = '0x1111';
 
   it('sends the correct request body to the backend API', () => {
-    cy.visit(`verify?address=${address}&signature=${signature}&email=${email}`);
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 }).as('verify');
-    cy.get('button').click();
+    cy.visit(`verify?address=${address}&signature=${signature}&email=${email}`);
 
     cy.get('@verify').its('request.body').should('deep.equal', {
       method: 'snapshot.verify',
@@ -19,8 +18,8 @@ describe('Verify', () => {
   });
 
   it('shows the success message when the email is verified', () => {
-    cy.visit(`verify?address=${address}&signature=${signature}&email=${email}`);
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 });
+    cy.visit(`verify?address=${address}&signature=${signature}&email=${email}`);
     cy.get('p').contains('verified');
     cy.get('button').contains('Go back to Snapshot');
   });
