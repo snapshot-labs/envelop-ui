@@ -55,9 +55,7 @@ function verify() {
     });
 }
 
-onMounted(() => {
-  verify();
-});
+onMounted(() => verify());
 </script>
 
 <template>
