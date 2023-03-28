@@ -62,7 +62,10 @@ onMounted(() => {
 <template>
   <MessageTitle>Unsubscribe</MessageTitle>
 
-  <div v-if="status === Status.SUCCESS">
+  <div v-if="status === Status.UNKNOWN">
+    <MessageBody>Please wait while we're unsubscribing your email.</MessageBody>
+  </div>
+  <div v-else-if="status === Status.SUCCESS">
     <MessageBody>You have been unsubscribed from the Snapshot weekly summary.</MessageBody>
     <RedirectButton />
   </div>
