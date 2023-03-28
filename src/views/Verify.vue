@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useSeoMeta } from '@vueuse/head';
 import BaseButton from '@/components/BaseButton.vue';
@@ -54,15 +54,14 @@ function verify() {
       console.log(error);
     });
 }
+
+onMounted(() => verify());
 </script>
 
 <template>
   <MessageTitle>Verify your email</MessageTitle>
   <div v-if="status === Status.UNKNOWN">
-    <MessageBody>
-      Please verify your email to confirm your subscription to the Snapshot weekly summary.
-    </MessageBody>
-    <BaseButton :loading="loading" primary @click="verify">Verify email</BaseButton>
+    <MessageBody>Please wait while we are verifying your email address.</MessageBody>
   </div>
   <div v-else-if="status === Status.SUCCESS">
     <MessageBody>Your email has been verified.</MessageBody>
