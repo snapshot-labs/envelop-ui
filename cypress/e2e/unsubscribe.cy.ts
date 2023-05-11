@@ -8,7 +8,7 @@ describe('Unsubscribe', () => {
       body: { summary: { name: 'Summary', description: 'Summary description' } }
     }).as('subscriptionsList');
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 }).as('unsubscribe');
-    cy.visit(`unsubscribe?signature=${signature}&email=${email}`);
+    cy.visit(`#/unsubscribe?signature=${signature}&email=${email}`);
     cy.get('[data-test="btn-submit"]').click();
     cy.get('@unsubscribe')
       .its('request.body')
@@ -28,7 +28,7 @@ describe('Unsubscribe', () => {
       body: { summary: { name: 'Summary', description: 'Summary description' } }
     }).as('subscriptionsList');
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 }).as('unsubscribe');
-    cy.visit(`unsubscribe?signature=${signature}&email=${email}`);
+    cy.visit(`#/unsubscribe?signature=${signature}&email=${email}`);
     cy.get('form input:first-child()').click();
     cy.get('[data-test="btn-submit"]').click();
     cy.get('[data-test="message-success-unsubscribe"]').should('exist');
@@ -51,7 +51,7 @@ describe('Unsubscribe', () => {
       body: { summary: { name: 'Summary', description: 'Summary description' } }
     }).as('subscriptionsList');
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 }).as('unsubscribe');
-    cy.visit(`unsubscribe?signature=${signature}&email=${email}`);
+    cy.visit(`#/unsubscribe?signature=${signature}&email=${email}`);
     cy.get('[data-test="btn-submit"]').click();
     cy.get('[data-test="message-success-update"]').should('exist');
     cy.get('[data-test="btn-redirect"]').should('exist');
@@ -69,7 +69,7 @@ describe('Unsubscribe', () => {
 
   it('shows an error message when the unable to build the subscriptions list', () => {
     cy.intercept('GET', `${Cypress.env('VITE_API_URL')}/subscriptionsList`, { statusCode: 500 });
-    cy.visit('unsubscribe');
+    cy.visit('#/unsubscribe');
     cy.get('[data-test="message-error"]').should('exist');
     cy.get('[data-test="form"]').should('not.exist');
   });
@@ -80,7 +80,7 @@ describe('Unsubscribe', () => {
       body: { summary: { name: 'Summary', description: 'Summary description' } }
     }).as('subscriptionsList');
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 500 }).as('post');
-    cy.visit('unsubscribe');
+    cy.visit('#/unsubscribe');
     cy.get('[data-test="btn-submit"]').click();
     cy.get('[data-test="message-error"]').should('exist');
     cy.get('[data-test="form"]').should('exist');

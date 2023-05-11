@@ -5,7 +5,7 @@ describe('Verify', () => {
 
   it('sends the correct request body to the backend API', () => {
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 }).as('verify');
-    cy.visit(`verify?address=${address}&signature=${signature}&email=${email}`);
+    cy.visit(`#/verify?address=${address}&signature=${signature}&email=${email}`);
 
     cy.get('@verify').its('request.body').should('deep.equal', {
       method: 'snapshot.verify',
@@ -19,14 +19,14 @@ describe('Verify', () => {
 
   it('shows the success message when the email is verified', () => {
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 });
-    cy.visit(`verify?address=${address}&signature=${signature}&email=${email}`);
+    cy.visit(`#/verify?address=${address}&signature=${signature}&email=${email}`);
     cy.get('[data-test="message-success"]').should('exist');
     cy.get('[data-test="btn-redirect"]').should('exist');
     cy.get('[data-test="btn-verify"]').should('not.exist');
   });
 
   it('shows an error message when the verify request is failing', () => {
-    cy.visit(`verify?address=${address}&signature=${signature}&email=${email}`);
+    cy.visit(`#/verify?address=${address}&signature=${signature}&email=${email}`);
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 500 });
     cy.get('[data-test="message-error"]').should('exist');
     cy.get('[data-test="btn-verify"]').should('exist');
