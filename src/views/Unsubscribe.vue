@@ -29,14 +29,20 @@ useSeoMeta({
 });
 
 async function initForm() {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/subscriptionsList`);
-  status.value = Status.WAITING;
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/subscriptionsList`);
+    status.value = Status.WAITING;
 
-  if (response.status === 200) {
-    subscriptionsList.value = await response.json();
-    updatedSubscriptions.value = Object.keys(subscriptionsList.value);
-  } else {
+    if (response.status === 200) {
+      subscriptionsList.value = await response.json();
+      updatedSubscriptions.value = Object.keys(subscriptionsList.value);
+    } else {
+      status.value = Status.ERROR;
+    }
+  } catch (error) {
     status.value = Status.ERROR;
+    loading.value = false;
+    console.log(error);
   }
 }
 
@@ -77,7 +83,7 @@ async function unsubscribe(subscriptions: string[]) {
 }
 
 const subscriptionsListReady = computed(() => {
-  return Object.keys(subscriptionsList).length > 0;
+  return Object.keys(subscriptionsList.value).length > 0;
 });
 
 onMounted(() => initForm());
@@ -89,21 +95,23 @@ onMounted(() => initForm());
       <MessageBody><LoadingSpinner :big="true" /></MessageBody>
     </div>
     <div v-else-if="status === Status.SUCCESS">
-      <MessageBody v-if="updatedSubscriptions.length === 0">
+      <MessageBody v-if="updatedSubscriptions.length === 0" data-test="message-success-unsubscribe">
         You have been unsubscribed from the Snapshot mailing list.
       </MessageBody>
-      <MessageBody v-else>Your email subscription preferences have been updated.</MessageBody>
+      <MessageBody v-else data-test="message-success-update"
+        >Your email subscription preferences have been updated.</MessageBody
+      >
       <RedirectButton class="mt-3" />
     </div>
     <div v-else class="text-left">
       <div v-if="status === Status.ERROR">
-        <MessageBox variant="danger">
+        <MessageBox data-test="message-error" variant="danger">
           An error occured while processing your request. Please try again, or
           <a title="Contact the support" href="https://discord.snapshot.org/">contact the support</a
           >.
         </MessageBox>
       </div>
-      <form v-if="subscriptionsListReady">
+      <form v-if="subscriptionsListReady" data-test="form" @submit.prevent="update">
         <p class="mb-2">Select the email categories you wish to receive:</p>
         <template v-for="(data, key) in subscriptionsList" :key="key">
           <InputCheckbox v-model="updatedSubscriptions" :value="key" class="py-2">
@@ -111,7 +119,13 @@ onMounted(() => initForm());
             <small class="subscription-description">{{ data.description }}</small>
           </InputCheckbox>
         </template>
-        <BaseButton primary :loading="loading" type="submit" class="mt-5" @click="update"
+        <BaseButton
+          primary
+          :loading="loading"
+          data-test="btn-submit"
+          type="submit"
+          class="mt-5"
+          @click.stop="update"
           >Update preferences</BaseButton
         >
         <BaseButton :loading="loading" type="submit" class="mt-3" @click="unsubscribeFromAll"

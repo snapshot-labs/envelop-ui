@@ -59,16 +59,18 @@ onMounted(() => verify());
       <MessageBody>Please wait while we are verifying your email address.</MessageBody>
     </div>
     <div v-else-if="status === Status.SUCCESS">
-      <MessageBody>Your email has been verified.</MessageBody>
+      <MessageBody data-test="message-success">Your email has been verified.</MessageBody>
       <RedirectButton class="mt-3" />
     </div>
     <div v-else>
-      <MessageBody variant="danger">
+      <MessageBody data-test="message-error" variant="danger">
         An error occured while verifying your email. Ensure your verification link is correct and
         try again, or
         <a title="Contact the support" href="https://discord.snapshot.org/">contact the support</a>.
       </MessageBody>
-      <BaseButton primary :loading="loading" @click="verify">Verify email</BaseButton>
+      <BaseButton primary :loading="loading" data-test="btn-verify" @click="verify"
+        >Verify email</BaseButton
+      >
     </div>
   </BasePage>
 </template>

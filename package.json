@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "vite --port=8080",
+    "dev": "vite --port=8090",
     "prebuild": "yarn typecheck",
     "build": "vite build",
     "lint:nofix": "eslint \"./src/**/*.{ts,vue,json}\"",
