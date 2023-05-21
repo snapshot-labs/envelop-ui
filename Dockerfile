@@ -9,8 +9,8 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN npm run build
+RUN yarn run build
 
 EXPOSE 8080
 
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "run", "dev"]
