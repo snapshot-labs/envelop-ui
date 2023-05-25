@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Verify from '@/views/Verify.vue';
 import Unsubscribe from '@/views/Unsubscribe.vue';
+import Update from '@/views/Update.vue';
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/unsubscribe',
       name: 'unsubscribe',
       component: Unsubscribe
+    },
+    {
+      path: '/update',
+      name: 'update',
+      component: Update
     },
     {
       path: '/:pathMatch(.*)*',
