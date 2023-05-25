@@ -15,5 +15,4 @@ jobs:
       - run: yarn lint:nofix
       - run: echo "VITE_API_URL=http://localhost:3000" > .env
       - run: yarn build
-      - run: yarn vite preview --port=8080 &
       - run: yarn test:e2e
