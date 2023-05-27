@@ -7,7 +7,7 @@ describe('update', () => {
       statusCode: 200,
       body: { summary: { name: 'Summary', description: 'Summary description' } }
     }).as('subscriptionsList');
-    cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 }).as('update');
+    cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200, body: {} }).as('update');
     cy.visit(`#/update?signature=${signature}&email=${email}`);
     cy.get('[data-test="btn-submit"]').click();
     cy.get('@update')
@@ -27,7 +27,7 @@ describe('update', () => {
       statusCode: 200,
       body: { summary: { name: 'Summary', description: 'Summary description' } }
     }).as('subscriptionsList');
-    cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200 }).as('update');
+    cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 200, body: {} }).as('update');
     cy.visit(`#/update?signature=${signature}&email=${email}`);
     cy.get('[data-test="btn-submit"]').click();
     cy.get('[data-test="message-success"]').should('exist');
