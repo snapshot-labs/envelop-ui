@@ -113,14 +113,7 @@ onMounted(initForm);
             <small class="subscription-description">{{ data.description }}</small>
           </InputCheckbox>
         </template>
-        <BaseButton
-          primary
-          :loading="loading"
-          data-test="btn-submit"
-          type="submit"
-          class="mt-5"
-          @click.stop="update"
-        >
+        <BaseButton primary :loading="loading" data-test="btn-submit" type="submit" class="mt-5">
           Update preferences
         </BaseButton>
       </form>
