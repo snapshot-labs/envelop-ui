@@ -68,9 +68,9 @@ onMounted(() => verify());
         try again, or
         <a title="Contact the support" href="https://discord.snapshot.org/">contact the support</a>.
       </MessageBody>
-      <BaseButton primary :loading="loading" data-test="btn-verify" @click="verify"
-        >Verify email</BaseButton
-      >
+      <BaseButton primary :loading="loading" data-test="btn-verify" @click="verify">
+        Verify email
+      </BaseButton>
     </div>
   </BasePage>
 </template>

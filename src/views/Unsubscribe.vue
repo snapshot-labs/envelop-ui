@@ -73,9 +73,9 @@ onMounted(() => {
         An error occured while processing your request. Please try again, or
         <a title="Contact the support" href="https://discord.snapshot.org/">contact the support</a>.
       </MessageBody>
-      <BaseButton primary data-test="btn-submit" :loading="loading" @click="unsubscribe"
-        >Unsubscribe</BaseButton
-      >
+      <BaseButton primary data-test="btn-submit" :loading="loading" @click="unsubscribe">
+        Unsubscribe
+      </BaseButton>
     </div>
   </BasePage>
 </template>
