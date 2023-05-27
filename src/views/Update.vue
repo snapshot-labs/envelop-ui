@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, Ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useSeoMeta } from '@vueuse/head';
+import { useFetch } from '@vueuse/core';
 import BasePage from '@/components/BasePage.vue';
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import MessageBody from '@/components/MessageBody.vue';
@@ -12,7 +13,7 @@ import BaseButton from '@/components/BaseButton.vue';
 
 enum Status {
   UNKNOWN,
-  WAITING,
+  INITIATED,
   SUCCESS,
   ERROR
 }
@@ -29,28 +30,30 @@ useSeoMeta({
 });
 
 async function initForm() {
-  try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/subscriptionsList`);
-    status.value = Status.WAITING;
+  status.value = Status.INITIATED;
+  const fetch = useFetch(`${import.meta.env.VITE_API_URL}/subscriptionsList`)
+    .get()
+    .json();
 
-    if (response.status === 200) {
-      subscriptionsList.value = await response.json();
-      updatedSubscriptions.value = Object.keys(subscriptionsList.value);
-    } else {
-      status.value = Status.ERROR;
-    }
-  } catch (error) {
+  // eslint-disable-next-line vue/no-ref-as-operand
+  loading = fetch.isFetching;
+  // eslint-disable-next-line vue/no-ref-as-operand
+  subscriptionsList = fetch.data;
+
+  fetch.onFetchError(() => {
     status.value = Status.ERROR;
-    loading.value = false;
-    console.error(error);
-  }
+  });
+
+  fetch.onFetchResponse(() => {
+    updatedSubscriptions.value = Object.keys(subscriptionsList.value);
+  });
 }
 
 async function update() {
   loading.value = true;
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}`, {
+    const response = await fetch(import.meta.env.VITE_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -75,10 +78,10 @@ async function update() {
 }
 
 const subscriptionsListReady = computed(() => {
-  return Object.keys(subscriptionsList.value).length > 0;
+  return subscriptionsList.value && Object.keys(subscriptionsList.value).length > 0;
 });
 
-onMounted(() => initForm());
+onMounted(initForm);
 </script>
 
 <template>

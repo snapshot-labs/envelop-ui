@@ -17,6 +17,7 @@
   },
   "prettier": "@snapshot-labs/prettier-config",
   "dependencies": {
+    "@vueuse/core": "^10.1.2",
     "@vueuse/head": "^1.1.23",
     "dotenv": "^16.0.3",
     "vue": "^3.2.47",
