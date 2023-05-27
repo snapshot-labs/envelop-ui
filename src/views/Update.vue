@@ -87,9 +87,9 @@ onMounted(() => initForm());
       <MessageBody><LoadingSpinner :big="true" /></MessageBody>
     </div>
     <div v-else-if="status === Status.SUCCESS">
-      <MessageBody data-test="message-success"
-        >Your email subscription preferences have been updated.</MessageBody
-      >
+      <MessageBody data-test="message-success">
+        Your email subscription preferences have been updated.
+      </MessageBody>
       <RedirectButton class="mt-3" />
     </div>
     <div v-else class="text-left">
