@@ -115,8 +115,9 @@ onMounted(() => initForm());
           type="submit"
           class="mt-5"
           @click.stop="update"
-          >Update preferences</BaseButton
         >
+          Update preferences
+        </BaseButton>
       </form>
     </div>
   </BasePage>
