@@ -63,9 +63,9 @@ onMounted(() => {
 <template>
   <BasePage :centered="true" title="Unsubscribe">
     <div v-if="status === Status.SUCCESS">
-      <MessageBody data-test="message-success"
-        >You have been unsubscribed from the Snapshot mailing list.</MessageBody
-      >
+      <MessageBody data-test="message-success">
+        You have been unsubscribed from the Snapshot mailing list.
+      </MessageBody>
       <RedirectButton />
     </div>
     <div v-else-if="status === Status.ERROR">
