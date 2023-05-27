@@ -55,9 +55,7 @@ function unsubscribe() {
     });
 }
 
-onMounted(() => {
-  unsubscribe();
-});
+onMounted(unsubscribe);
 </script>
 
 <template>
