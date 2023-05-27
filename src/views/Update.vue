@@ -50,31 +50,29 @@ async function initForm() {
 }
 
 async function update() {
-  loading.value = true;
-
-  try {
-    const response = await fetch(import.meta.env.VITE_API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+  const fetch = useFetch(import.meta.env.VITE_API_URL, {
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .post(() => ({
+      params: {
+        email: route.query.email,
+        signature: route.query.signature,
+        subscriptions: updatedSubscriptions.value
       },
-      body: JSON.stringify({
-        params: {
-          email: route.query.email,
-          signature: route.query.signature,
-          subscriptions: updatedSubscriptions.value
-        },
-        method: 'snapshot.update'
-      })
-    });
+      method: 'snapshot.update'
+    }))
+    .json();
 
-    loading.value = false;
-    status.value = response.status === 200 ? Status.SUCCESS : Status.ERROR;
-  } catch (error) {
+  // eslint-disable-next-line vue/no-ref-as-operand
+  loading = fetch.isFetching;
+
+  fetch.onFetchResponse(() => {
+    status.value = Status.SUCCESS;
+  });
+
+  fetch.onFetchError(() => {
     status.value = Status.ERROR;
-    loading.value = false;
-    console.error(error);
-  }
+  });
 }
 
 const subscriptionsListReady = computed(() => {
