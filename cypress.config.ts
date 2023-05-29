@@ -6,7 +6,7 @@ export default defineConfig({
   video: false,
   e2e: {
     supportFile: false,
-    baseUrl: 'http://localhost:8090',
+    baseUrl: `http://localhost:${process.env.PORT || '8085'}`,
     setupNodeEvents(on, config) {
       dotenv.config();
 
