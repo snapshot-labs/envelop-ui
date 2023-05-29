@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev": "vite --port=8080",
+    "dev": "vite --port=8090",
     "prebuild": "yarn typecheck",
     "build": "vite build",
     "lint:nofix": "eslint \"./src/**/*.{ts,vue,json}\"",
@@ -17,6 +17,7 @@
   },
   "prettier": "@snapshot-labs/prettier-config",
   "dependencies": {
+    "@vueuse/core": "^10.1.2",
     "@vueuse/head": "^1.1.23",
     "dotenv": "^16.0.3",
     "vue": "^3.2.47",
