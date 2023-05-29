@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useSeoMeta } from '@vueuse/head';
+import { useFetch } from '@vueuse/core';
 import BasePage from '@/components/BasePage.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import MessageBody from '@/components/MessageBody.vue';
@@ -23,34 +24,34 @@ useSeoMeta({
 });
 
 async function verify() {
-  loading.value = true;
-
-  try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+  const fetch = useFetch(import.meta.env.VITE_API_URL, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .post(() => ({
+      params: {
+        email: route.query.email,
+        signature: route.query.signature,
+        address: route.query.address
       },
-      body: JSON.stringify({
-        params: {
-          email: route.query.email,
-          signature: route.query.signature,
-          address: route.query.address
-        },
-        method: 'snapshot.verify'
-      })
-    });
+      method: 'snapshot.verify'
+    }))
+    .json();
 
-    loading.value = false;
-    status.value = response.status === 200 ? Status.SUCCESS : Status.ERROR;
-  } catch (error) {
+  // eslint-disable-next-line vue/no-ref-as-operand
+  loading = fetch.isFetching;
+
+  fetch.onFetchResponse(() => {
+    status.value = Status.SUCCESS;
+  });
+
+  fetch.onFetchError(() => {
     status.value = Status.ERROR;
-    loading.value = false;
-    console.log(error);
-  }
+  });
 }
 
-onMounted(() => verify());
+onMounted(verify);
 </script>
 
 <template>
