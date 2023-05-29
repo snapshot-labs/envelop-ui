@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <BaseLoading class="loading" :class="{ small, big }">
+  <div class="loading" :class="{ small, big }">
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
       <path
         :class="{ '!fill-white': fillWhite }"
@@ -32,7 +32,7 @@ defineProps({
         />
       </path>
     </svg>
-  </BaseLoading>
+  </div>
 </template>
 
 <style lang="scss">

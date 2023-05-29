@@ -16,10 +16,6 @@
   }
 }
 
-:global(.brand-logo + *) {
-  @apply mt-4;
-}
-
 @media (prefers-color-scheme: dark) {
   .brand-logo {
     .theme-dark {
