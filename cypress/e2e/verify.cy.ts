@@ -1,3 +1,6 @@
+/// <reference types="cypress-image-snapshot" />
+import '../support';
+
 describe('Verify', () => {
   const email = 'test@snapshot.org';
   const signature = '0x0000';
@@ -23,6 +26,8 @@ describe('Verify', () => {
     cy.get('[data-test="message-success"]').should('exist');
     cy.get('[data-test="btn-redirect"]').should('exist');
     cy.get('[data-test="btn-verify"]').should('not.exist');
+
+    cy.matchImageSnapshot();
   });
 
   it('shows an error message when the verify request is failing', () => {
@@ -31,5 +36,7 @@ describe('Verify', () => {
     cy.get('[data-test="message-error"]').should('exist');
     cy.get('[data-test="btn-verify"]').should('exist');
     cy.get('[data-test="btn-redirect"]').should('not.exist');
+
+    cy.matchImageSnapshot();
   });
 });

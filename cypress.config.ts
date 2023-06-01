@@ -1,4 +1,6 @@
 import { defineConfig } from 'cypress';
+import { addMatchImageSnapshotPlugin } from 'cypress-image-snapshot/plugin';
+
 import * as dotenv from 'dotenv';
 
 export default defineConfig({
@@ -18,6 +20,8 @@ export default defineConfig({
             .map(k => [k, process.env[k]])
         )
       };
+
+      addMatchImageSnapshotPlugin(on, config);
 
       return config;
     }
