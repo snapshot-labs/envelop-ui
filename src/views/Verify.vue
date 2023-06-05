@@ -33,7 +33,8 @@ async function verify() {
       params: {
         email: route.query.email,
         signature: route.query.signature,
-        address: route.query.address
+        address: route.query.address,
+        salt: route.query.salt
       },
       method: 'snapshot.verify'
     }))
