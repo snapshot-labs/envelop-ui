@@ -1,3 +1,6 @@
+/// <reference types="cypress-image-snapshot" />
+import '../support';
+
 describe('update', () => {
   const email = 'test@snapshot.org';
   const signature = '0x0000';
@@ -42,6 +45,8 @@ describe('update', () => {
           subscriptions: ['summary']
         }
       });
+
+    cy.matchImageSnapshot();
   });
 
   it('shows an error message when the unable to build the subscriptions list', () => {
@@ -50,6 +55,8 @@ describe('update', () => {
     cy.get('[data-test="message-error"]').should('exist');
     cy.get('[data-test="form"]').should('not.exist');
     cy.get('[data-test="btn-submit"]').should('not.exist');
+
+    cy.matchImageSnapshot();
   });
 
   it('shows an error message when the update request is failing', () => {
@@ -63,5 +70,7 @@ describe('update', () => {
     cy.get('[data-test="btn-submit"]').should('exist');
     cy.get('[data-test="message-error"]').should('exist');
     cy.get('[data-test="form"]').should('exist');
+
+    cy.matchImageSnapshot();
   });
 });

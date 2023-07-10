@@ -1,3 +1,6 @@
+/// <reference types="cypress-image-snapshot" />
+import '../support';
+
 describe('Unsubscribe', () => {
   const email = 'test@snapshot.org';
   const signature = '0x0000';
@@ -22,12 +25,16 @@ describe('Unsubscribe', () => {
     cy.visit('#/unsubscribe');
     cy.get('[data-test="message-success"]').should('exist');
     cy.get('[data-test="btn-redirect"]').should('exist');
+
+    cy.matchImageSnapshot();
   });
 
   it('shows an error message when the unsubscribe request is failing', () => {
     cy.intercept('POST', Cypress.env('VITE_API_URL'), { statusCode: 500 });
     cy.visit('#/unsubscribe');
     cy.get('[data-test="message-error"]').should('exist');
+
+    cy.matchImageSnapshot();
   });
 
   it('shows a button to retry when the unsubscribe request is failing', () => {

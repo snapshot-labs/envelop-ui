@@ -27,10 +27,12 @@
   "devDependencies": {
     "@snapshot-labs/eslint-config-vue": "^0.1.0-beta.7",
     "@snapshot-labs/prettier-config": "^0.1.0-beta.7",
+    "@types/cypress-image-snapshot": "^3.1.6",
     "@types/node": "^18.14.2",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
     "cypress": "^12.8.1",
+    "cypress-image-snapshot": "^4.0.1",
     "eslint": "^8.34.0",
     "eslint-plugin-cypress": "^2.12.1",
     "postcss": "^8.4.21",
