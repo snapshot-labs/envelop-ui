@@ -12,6 +12,10 @@ Set the envelop API url in the `.env` file
 
 > VITE_API_URL=
 
+Optionally, setup sentry for error logging, by setting your Sentry DSN
+
+> VITE_SENTRY_DSN
+
 ## Compiles and hot-reloads for development
 
 > yarn dev
