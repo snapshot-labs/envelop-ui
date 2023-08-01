@@ -25,6 +25,7 @@
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
+    "@sentry/vite-plugin": "^2.5.0",
     "@snapshot-labs/eslint-config-vue": "^0.1.0-beta.7",
     "@snapshot-labs/prettier-config": "^0.1.0-beta.7",
     "@types/node": "^18.14.2",
