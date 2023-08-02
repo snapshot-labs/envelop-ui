@@ -1,4 +1,6 @@
 import { defineConfig } from 'cypress';
+import { addMatchImageSnapshotPlugin } from 'cypress-image-snapshot/plugin';
+
 import * as dotenv from 'dotenv';
 
 export default defineConfig({
@@ -18,6 +20,18 @@ export default defineConfig({
             .map(k => [k, process.env[k]])
         )
       };
+
+      on('before:browser:launch', (browser, launchOptions) => {
+        if (browser.name === 'electron' && browser.isHeadless) {
+          // fullPage screenshot size is 1400x1200
+          launchOptions.preferences.width = 1400;
+          launchOptions.preferences.height = 1200;
+        }
+
+        return launchOptions;
+      });
+
+      addMatchImageSnapshotPlugin(on, config);
 
       return config;
     }
