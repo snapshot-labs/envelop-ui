@@ -69,9 +69,16 @@ onMounted(unsubscribe);
     <div v-else-if="status === Status.ERROR">
       <MessageBody data-test="message-error" variant="danger">
         An error occured while processing your request. Please try again, or
-        <a title="Contact the support" href="https://discord.snapshot.org/">contact the support</a>.
+        <a title="Contact the support" href="https://discord.snapshot.org/"
+          >contact the support</a
+        >.
       </MessageBody>
-      <BaseButton primary data-test="btn-submit" :loading="loading" @click="unsubscribe">
+      <BaseButton
+        primary
+        data-test="btn-submit"
+        :loading="loading"
+        @click="unsubscribe"
+      >
         Unsubscribe
       </BaseButton>
     </div>

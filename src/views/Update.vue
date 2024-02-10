@@ -76,7 +76,9 @@ async function update() {
 }
 
 const subscriptionsListReady = computed(() => {
-  return subscriptionsList.value && Object.keys(subscriptionsList.value).length > 0;
+  return (
+    subscriptionsList.value && Object.keys(subscriptionsList.value).length > 0
+  );
 });
 
 onMounted(initForm);
@@ -103,15 +105,31 @@ onMounted(initForm);
           .
         </MessageBox>
       </div>
-      <form v-if="subscriptionsListReady" data-test="form" @submit.prevent="update">
+      <form
+        v-if="subscriptionsListReady"
+        data-test="form"
+        @submit.prevent="update"
+      >
         <p class="mb-2">Select the email categories you wish to receive:</p>
         <template v-for="(data, key) in subscriptionsList" :key="key">
-          <InputCheckbox v-model="updatedSubscriptions" :value="key" class="py-2">
+          <InputCheckbox
+            v-model="updatedSubscriptions"
+            :value="key"
+            class="py-2"
+          >
             <span class="subscription-name">{{ data.name }}</span>
-            <small class="subscription-description">{{ data.description }}</small>
+            <small class="subscription-description">{{
+              data.description
+            }}</small>
           </InputCheckbox>
         </template>
-        <BaseButton primary :loading="loading" data-test="btn-submit" type="submit" class="mt-5">
+        <BaseButton
+          primary
+          :loading="loading"
+          data-test="btn-submit"
+          type="submit"
+          class="mt-5"
+        >
           Update preferences
         </BaseButton>
       </form>

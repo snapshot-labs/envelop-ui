@@ -7,5 +7,7 @@ function redirect() {
 </script>
 
 <template>
-  <BaseButton data-test="btn-redirect" @click="redirect">Go back to Snapshot</BaseButton>
+  <BaseButton data-test="btn-redirect" @click="redirect"
+    >Go back to Snapshot</BaseButton
+  >
 </template>
