@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@sentry/vite-plugin": "^2.5.0",
-    "@snapshot-labs/eslint-config-vue": "^0.1.0-beta.7",
-    "@snapshot-labs/prettier-config": "^0.1.0-beta.7",
+    "@snapshot-labs/eslint-config-vue": "^0.1.0-beta.15",
+    "@snapshot-labs/prettier-config": "^0.1.0-beta.15",
     "@types/node": "^18.14.2",
     "@vitejs/plugin-vue": "^4.1.0",
     "autoprefixer": "^10.4.14",
