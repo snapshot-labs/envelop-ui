@@ -2,11 +2,21 @@
 import BrandLogo from '@/components/BrandLogo.vue';
 import MessageTitle from '@/components/MessageTitle.vue';
 
-withDefaults(defineProps<{ centered?: boolean; title: string }>(), { centered: true });
+withDefaults(defineProps<{ centered?: boolean; title: string }>(), {
+  centered: true
+});
 </script>
 
 <template>
-  <div :class="['max-w-screen-xs', 'xs:w-[420px]', 'p-5', 'py-6', { 'text-center': centered }]">
+  <div
+    :class="[
+      'max-w-screen-xs',
+      'xs:w-[420px]',
+      'p-5',
+      'py-6',
+      { 'text-center': centered }
+    ]"
+  >
     <BrandLogo />
     <div v-if="centered" class="space-sep"></div>
     <div v-else class="line-sep"></div>
