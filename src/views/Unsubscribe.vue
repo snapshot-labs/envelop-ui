@@ -69,7 +69,7 @@ onMounted(unsubscribe);
     <div v-else-if="status === Status.ERROR">
       <MessageBody data-test="message-error" variant="danger">
         An error occured while processing your request. Please try again, or
-        <a title="Contact the support" href="https://discord.snapshot.org/"
+        <a title="Contact the support" href="https://help.snapshot.box/"
           >contact the support</a
         >.
       </MessageBody>

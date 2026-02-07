@@ -99,7 +99,7 @@ onMounted(initForm);
       <div v-if="status === Status.ERROR">
         <MessageBox data-test="message-error" variant="danger">
           An error occured while processing your request. Please try again, or
-          <a title="Contact the support" href="https://discord.snapshot.org/">
+          <a title="Contact the support" href="https://help.snapshot.box/">
             contact the support
           </a>
           .
