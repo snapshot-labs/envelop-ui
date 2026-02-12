@@ -73,7 +73,7 @@ onMounted(verify);
       <MessageBody data-test="message-error" variant="danger">
         An error occured while verifying your email. Ensure your verification
         link is correct and try again, or
-        <a title="Contact the support" href="https://discord.snapshot.org/"
+        <a title="Contact the support" href="https://help.snapshot.box/"
           >contact the support</a
         >.
       </MessageBody>
