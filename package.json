@@ -9,8 +9,8 @@
     "dev": "vite --port=8090",
     "prebuild": "yarn typecheck",
     "build": "vite build",
-    "lint:nofix": "eslint \"./src/**/*.{ts,vue,json}\"",
-    "lint": "yarn lint:nofix --fix",
+    "lint": "eslint \"./src/**/*.{ts,vue,json}\"",
+    "lint:fix": "yarn lint --fix",
     "typecheck": "vue-tsc --noEmit",
     "test:unit": "vitest",
     "test:e2e": "PORT=8085 start-server-and-test 'yarn vite --port=8085' http://localhost:8085 'cypress run'"

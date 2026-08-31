@@ -12,7 +12,7 @@ jobs:
           cache: 'yarn'
       - run: yarn --frozen-lockfile
       - run: yarn typecheck
-      - run: yarn lint:nofix
+      - run: yarn lint
       - run: echo "VITE_API_URL=http://localhost:3000" > .env
       - run: yarn build
       - run: yarn test:e2e
